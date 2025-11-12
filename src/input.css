@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  /* --color-background: linear-gradient(135deg,#153677,#4e085f);  */
+  /* Its not working.. */
+
+  --color-heading : #002765;
+  --color-dark-blue : #153677;
+  --color-danger : hsl(0 , 95% , 65%);
+  --color-light-danger : hsl(0 , 95% , 90%);
+
+  --font-weight-extrablack: 1000; 
+    --spacing-max-height: 22rem; 
+    --spacing-addButton: 35%; 
+
+  --font-urbanist: 'Urbanist', sans-serif;
+}

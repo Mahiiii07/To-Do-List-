@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="./output.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="bg-[linear-gradient(135deg,#153677,#4e085f)] font-urbanist w-full min-h-full py-14 px-3">
+        <div class="container md:w-5xl bg-white mx-auto py-6 px-10 rounded-4xl">
+            <div class="flex flex-row justify-center">
+                <h1 class="mt-2 font-extrablack text-3xl text-danger">To Do List</h1>
+                <img src="../Assets/icon.png" class="mx-4 h-12" />
+            </div>
+            <div class="flex flex-col md:flex-row gap-3">
+                <!-- Left Section -->
+                <div class="">
+                    <!-- Upper section (Progress bar) -->
+                    <h1 class="mt-4 text-2xl font-extrabold text-dark-blue">
+                        Your Progress :
+                    </h1>
+                    <div class="rounded-2xl border-2 bg-blue-50 border-dark-blue mt-4 flex flex-row p-4">
+                        <div class="text-2xl text-dark-blue font-extrabold w-50 p-4">
+                            <h3>Keep it Up!</h3>
+                            <div id="progress-bar" class="w-full h-2 bg-light-danger mt-4 rounded-2xl">
+                                <div id="progress"
+                                    class="w-0 h-full bg-danger mt-4 rounded-2xl relative transition duration-300 ease-in-out">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="py-6 px-2 md:px-3 text-white font-extrablack md:text-3xl text-2xl rounded-full bg-danger w-22 md:h-22 h-20">
+                            <p id="numbers">0 / 0</p>
+                        </div>
+                    </div>
+                    <!-- Lower Section (Guide) -->
+                    <h1 class="mt-4 text-2xl font-extrabold text-dark-blue">Guide :</h1>
+                    <div class="rounded-2xl border-2 bg-blue-50 border-dark-blue mt-4 flex flex-col md:flex-row p-4">
+                        <ul class="py-1 text-md text-gray-700 bg-blue-50 rounded-2xl px-1">
+                            <li>
+                                <a href="#" class="py-2 px-4 rounded-2xl flex flex-row items-center">
+                                    <img src="../Assets/Green Star.png" class="h-5" />
+                                    <div class="ml-3">Level 1 - Least Priority</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="py-2 px-4 rounded-2xl flex flex-row items-center">
+                                    <img src="../Assets/Blue Star.png" class="h-5" />
+                                    <div class="ml-3">Level 2 - Medium Priority</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="py-2 px-4 rounded-2xl flex flex-row items-center">
+                                    <img src="../Assets/Red Star.png" class="h-5" />
+                                    <div class="ml-3">Level 3 - Highest Priority</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="py-2 px-4 rounded-2xl flex flex-row items-center">
+                                    <img src="../Assets/edit.svg" class="h-5" />
+                                    <div class="ml-3">Edit - Edit your task</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="py-2 px-4 rounded-2xl flex flex-row items-center">
+                                    <img src="../Assets/delete.png" class="h-5" />
+                                    <div class="ml-3">Delete - Delete your task</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Middle section (Vertical Line) -->
+                <div class="md:block w-0.5 mt-16 hidden mx-3 bg-dark-blue"></div>
+                <!-- Right Section -->
+                <div class="">
+                    <h1 class="mt-4 text-2xl font-extrabold text-dark-blue">
+                        Add Task :
+                    </h1>
+
+                    <!-- Add Task section -->
+                    <div class="flex flex-col lg:flex-row gap-4 ">
+                        <div class="rounded-4xl border-2 bg-blue-50 border-dark-blue mt-4 ">
+                            <input type="text" id="input-box" placeholder="Enter your text"
+                                class="rounded-xl px-6 bg-transparent outline-none " />
+                            <button class="rounded-4xl bg-danger text-white font-semibold text-xl md:w-20 w-16 py-2 m-1 mx-addButton md:mx-1"
+                                id="addTask">
+                                Add
+                            </button>
+                        </div>
+                        <div class="rounded-4xl border-2 bg-blue-50 border-dark-blue mt-4">
+                            <div class="flex text-md text-gray-700 font-medium mt-1 " onclick="toggleDropdown()">
+                                <div class="ml-3 mt-2 mx-3">Priority level:</div>
+                                <button
+                                    class="rounded-full bg-danger w-12 text-white font-semibold text-xl py-2 m-1 mx-4 px-4 ml-23 md:ml-0">
+                                    <img src="../Assets/down-arrow.png" class="h-4" />
+                                </button>
+                            </div>
+
+                            <div id="dropdownMenu" class="absolute mt-5 w-48 hidden z-100">
+                                <ul
+                                    class="py-1 text-sm text-gray-700 bg-blue-50 border-2 border-dark-blue rounded-2xl px-1">
+                                    <li>
+                                        <a href="#"
+                                            class="py-2 px-4 hover:bg-light-danger rounded-2xl flex flex-row items-center"
+                                            id="level1">
+                                            <img src="../Assets/Green Star.png" class="h-3" />
+                                            <div class="ml-3">Level 1</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="py-2 px-4 hover:bg-light-danger rounded-2xl flex flex-row items-center"
+                                            id="level2">
+                                            <img src="../Assets/Blue Star.png" class="h-3" />
+                                            <div class="ml-3">Level 2</div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                            class="py-2 px-4 hover:bg-light-danger rounded-2xl flex flex-row items-center"
+                                            id="level3">
+                                            <img src="../Assets/Red Star.png" class="h-3" />
+                                            <div class="ml-3">Level 3</div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Task List -->
+                    <ul id="taskList" class="mt-6 space-y-3 max-h-max-height overflow-y-auto overflow-x-hidden"></ul>
+                        <!-- Empty state image -->
+                        <img id="emptyState" src="../Assets/icon.png" class="mx-auto w-40 opacity-60 mt-20" />
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
+
+
+<!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut commodi omnis sequi reiciendis excepturi, vel quos soluta tenetur expedita. Autem quasi quos velit quaerat sit incidunt inventore dolores, aliquid voluptatem, repellendus recusandae nostrum officia quae atque debitis eveniet qui? Aperiam nisi et sit impedit corrupti at consequatur temporibus dolore quidem. -->
